@@ -10,10 +10,10 @@ export default function MovieCase(props){
                 />
             <div className="card--content">
             <h3 className="card--title">{props.title}</h3>
-            <p><small>RELEASE DATE: {props.releaseDate}</small></p>
-            <p><small>RATING: {props.rating}</small></p>
-
-            <p className="card--desc">{props.overview}</p>
+            <p className="moreSpace"><small>RELEASE DATE: {props.releaseDate}</small></p>
+            <p className="moreSpace"><small>RATING: {props.rating}</small></p>
+            {/* <p>{props.adult?"18":''} </p> */}
+            <p className="card--desc moreSpace">{props.overview}</p>
             </div>
         </div>
     )

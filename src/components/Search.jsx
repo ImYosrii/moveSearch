@@ -16,13 +16,23 @@ export default function SearchMovie(){
     }
     
     async function getMovieData(){
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=a87f0643d12e321a96eeaee442ce84fb&language=en-US&query=${searchVal.text}&page=1`;
+        let url = `https://api.themoviedb.org/3/search/movie?api_key=a87f0643d12e321a96eeaee442ce84fb&language=en-US&query=${searchVal.text}&include_adult=true&page=1`;
 
         try{
-            const res = await fetch(url)
-            const data = await res.json()
-            console.log(data)
-            setMoviesData(data.results)
+            let res = await fetch(url)
+            let data = await res.json()
+            
+            let allData = data.results
+            let page = 2
+
+            while (page < 3){
+                url = `https://api.themoviedb.org/3/search/movie?api_key=a87f0643d12e321a96eeaee442ce84fb&language=en-US&query=${searchVal.text}&page=${page}`;
+                res = await fetch(url)
+                data = await res.json()
+                allData = [...allData, ...data.results]
+                page+=1
+            }
+            setMoviesData(allData)
         }
         catch(error){
             console.log(error)
@@ -44,6 +54,7 @@ export default function SearchMovie(){
                                                     releaseDate={movie.release_date}
                                                     rating={movie.vote_average}
                                                     overview={movie.overview}
+                                                    adult={movie.adult}
                                                 />) : ""
 
     return (

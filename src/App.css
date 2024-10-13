@@ -45,3 +45,53 @@ body {
 .search-btn:hover {
   background-color: rgba(0, 0, 0, 0.85);
 }
+
+.movies-cont {
+  margin-top: 4em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-gap: 3em 2em;
+}
+
+.card {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2em 4em;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  margin-bottom: 2em;
+  background-color: white;
+}
+
+.card--title {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: 2rem;
+}
+
+.card--image {
+  width: 70%;
+  margin: 0 auto;
+  display: block
+}
+
+
+.card--desc{
+  line-height: 1.4;
+}
+
+.moreSpace{
+  margin-top: .6em;
+}
+
+
+
+@media (min-width:786px) {
+.header-name {
+    font-size: 3rem;
+}
+.text-input {
+    width: 90%;
+    height: 6.5vh;
+  }
+}
