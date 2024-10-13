@@ -3,7 +3,7 @@ import MovieCase from "./MovieCase";
 
 export default function SearchMovie(){
     const [searchVal, setSearchVal] = useState({text:""})
-    const [moviesData, setMoviesData] = useState("")
+    const [moviesData, setMoviesData] = useState([])
 
     function updateSearch(e) {
         const {name, value} = e.target
@@ -16,13 +16,13 @@ export default function SearchMovie(){
     }
     
     async function getMovieData(){
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=a87f0643d12e321a96eeaee442ce84fb&language=en-US&query=${searchVal}&page=1&include_adult=false`;
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=a87f0643d12e321a96eeaee442ce84fb&language=en-US&query=${searchVal.text}&page=1`;
 
         try{
             const res = await fetch(url)
-            const data = await res.json();
-            setMoviesData(data)
+            const data = await res.json()
             console.log(data)
+            setMoviesData(data.results)
         }
         catch(error){
             console.log(error)
@@ -35,24 +35,16 @@ export default function SearchMovie(){
             })
         }
     }
-    
-/* 
-adult
-backdrop_path
-genre_ids
-id
-original_language
-original_title
-overview
-popularity
-poster_path
-release_date
-title
-video
-vote_average
-vote_count
-*/
 
+    const moviesList = moviesData.length ? moviesData.filter(movie => movie.poster_path)
+                                  .map(movie => <MovieCase
+                                                    key={movie.id}  
+                                                    title={movie.title}
+                                                    poster={movie.poster_path}
+                                                    releaseDate={movie.release_date}
+                                                    rating={movie.vote_average}
+                                                    overview={movie.overview}
+                                                />) : ""
 
     return (
         <>
@@ -72,7 +64,7 @@ vote_count
                     >Search</button>
             </div>
             <div className="movies-cont">
-
+                {moviesData.length > 0 && moviesList}
             </div>
         </>
     )
