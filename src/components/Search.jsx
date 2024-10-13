@@ -14,16 +14,16 @@ export default function SearchMovie(){
     }
     return (
         <div className="search-cont">
-            <label>Search Movie
                 <input 
+                    className="text-input"
                     type="text"
                     name="text"
                     placeholder="i.e. Jurassic Park"
                     value={searchVal.text}
                     onChange={updateSearch}
+                    aria-label="Movie Name"
                  ></input>
-            </label>
-            <button>Search</button>
+            <button className="search-btn">Search</button>
         </div>
     )
 }

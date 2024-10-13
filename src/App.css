@@ -8,3 +8,40 @@ body {
   background-color: rgb(244, 244, 244);
   color: #333;
 }
+
+.header-name{
+  text-align: center;
+  margin-top: 1em;
+  font-size: 2rem;
+}
+
+.search-cont{
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.text-input{
+  width:70%;
+  height: 4.5vh;
+  padding: 0.5em;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-right: none;
+}
+.search-btn{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0 .7em;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-left: none;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
