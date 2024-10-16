@@ -16,7 +16,7 @@ export default function SearchMovie(){
     }
     
     async function getMovieData(){
-        let url = `https://api.themoviedb.org/3/search/movie?api_key=a87f0643d12e321a96eeaee442ce84fb&language=en-US&query=${searchVal.text}&include_adult=true&page=1`;
+        let url = `https://api.themoviedb.org/3/search/movie?api_key=a87f0643d12e321a96eeaee442ce84fb&language=en-US&query=${searchVal.text}&page=1`;
 
         try{
             let res = await fetch(url)
