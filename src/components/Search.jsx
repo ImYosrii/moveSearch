@@ -2,9 +2,11 @@ import React, {useState, useEffect} from "react";
 import MovieCase from "./MovieCase";
 
 export default function SearchMovie(){
+    // search value input from user state
     const [searchVal, setSearchVal] = useState({text:""})
     const [moviesData, setMoviesData] = useState([])
 
+    // updates the searchVal variable in real time making it the only source of truth
     function updateSearch(e) {
         const {name, value} = e.target
         setSearchVal(prevData => {
@@ -15,6 +17,7 @@ export default function SearchMovie(){
         })
     }
     
+    // async function to get search data
     async function getMovieData(){
         let url = `https://api.themoviedb.org/3/search/movie?api_key=a87f0643d12e321a96eeaee442ce84fb&language=en-US&query=${searchVal.text}&page=1`;
 
@@ -46,6 +49,7 @@ export default function SearchMovie(){
         }
     }
 
+    // creats a list of MovieCase components
     const moviesList = moviesData.length ? moviesData.filter(movie => movie.poster_path)
                                   .map(movie => <MovieCase
                                                     key={movie.id}  
